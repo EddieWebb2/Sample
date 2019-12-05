@@ -7,7 +7,6 @@ var rename = require('gulp-rename');
 var msbuild = require('gulp-msbuild');
 var nuget = require('gulp-nuget');
 var bump = require('gulp-bump');
-var xunit = require('gulp-xunit-runner');
 
 //optional, lets you do .pipe(debug()) to see whats going on
 
@@ -73,19 +72,8 @@ gulp.task('compile', [ "restore", "version" ], function() {
     }));
 });
 
-gulp.task('test', [ "compile" ], function() {
-  return gulp
-    .src(['**/bin/*/*.Tests.dll'], { read: false })
-    .pipe(xunit({
-      executable: 'packages/xunit.runner.console.2.1.0/tools/xunit.console.x86.exe',
-      options: {
-        nologo: true,
-        verbose: true
-      }
-    }));
-});
 
-gulp.task('publish', [ "test" ], function() {
+gulp.task('publish', function() {
   return gulp
     .src([ "*/bin/*.nupkg", "*/bin/*/*.nupkg" ])
     .pipe(nuget.push({
@@ -102,15 +90,7 @@ gulp.task('createRelease', [ "publish" ], shell.task([
   ' --project ' + config.name +
   ' --version ' + config.version +
   ' --defaultpackageversion ' + config.version +
-  ' --deployto ' + config.deployTarget +
-  ' --releasenotesfile ' + config.releasenotesfile,
-  '".build/tools/octo.exe" create-release' +
-  ' --server ' + octopus.host +
-  ' --apikey ' + octopus.apiKey +
-  ' --project ' + config.background +
-  ' --version ' + config.version +
-  ' --defaultpackageversion ' + config.version +
-  ' --deployto ' + config.deployTarget +
+  ' --deployto ' + "Dev" +
   ' --releasenotesfile ' + config.releasenotesfile
 ]));
  
