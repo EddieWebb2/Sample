@@ -1,1 +1,1 @@
-# <PROJECTNAME>
+# SAMPLE
