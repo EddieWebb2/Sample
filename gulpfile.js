@@ -33,7 +33,7 @@ var octopus = {
 	packages: '/nuget/packages'
 }
 
-gulp.task('default', [ "restore", "version", "compile", "test" ]);
+gulp.task('default', [ "restore", "version", "compile" ]);
 gulp.task('deploy', [ "publish", "createRelease" ]);
 
 gulp.task('restore', shell.task([
