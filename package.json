@@ -1,0 +1,16 @@
+{
+  "name": "<ADD PROJECT NAME HERE>",
+  "version": "0.0.2",
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-bump": "^3.1.1",
+    "gulp-debug": "^3.2.0",
+    "gulp-dotnet-assembly-info": "^0.1.12",
+    "gulp-msbuild": "^0.5.5",
+    "gulp-nuget": "^1.2.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-shell": "^0.6.5",
+    "gulp-xunit-runner": "^0.1.1",
+    "yargs": "^11.0.0"
+  }
+}
